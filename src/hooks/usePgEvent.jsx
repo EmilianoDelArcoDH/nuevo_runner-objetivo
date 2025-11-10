@@ -56,8 +56,10 @@ export const usePgEvent = () => {
 
 
   const postToPg = (dataObject) => {
+    // console.log("post");
+    
     const newDataObject = { ...dataObject, type: data.type, id: data.id };
-    //console.log("Estoy usando el evento ",dataObject.event," con el objeto: ", dataObject);
+    console.log("Estoy usando el evento con el objeto: ", newDataObject);
     window.top.postMessage(newDataObject, "*");
   };
 
