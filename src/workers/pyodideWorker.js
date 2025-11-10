@@ -12,7 +12,7 @@ let packagesRun = [];             // array de paquetes cargados
 
 // ===================== Helper de mensajes =================
 function send(type, extra = {}, reqId = null) {
-  postMessage({ type, ...extra, reqId });
+  postMessage({ type, ...extra});
 }
 
 // ===================== Carga de Pyodide ===================
