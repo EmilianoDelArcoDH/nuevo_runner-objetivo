@@ -66,7 +66,7 @@ export const usePgEvent = () => {
         event: eventType,
         message,
         reasons: normReasons,
-        state: { event: eventType, data: state }, // ← OBJETO, no string
+        state: JSON.stringify({ event: eventType, data: state }), // ← OBJETO, no string
         ts: Date.now(),
       };
 
