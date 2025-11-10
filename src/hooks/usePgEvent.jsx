@@ -78,7 +78,9 @@ export const usePgEvent = () => {
 };
 
   useEffect(() => {
+    
     getValues(); // Get values when the component mounts
+    console.log(getValues());
   }, []);
 
   return {
