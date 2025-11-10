@@ -64,7 +64,7 @@ const usePyodide = () => {
       // ✅ Enviar RUN_CODE con reqId + testMode
       worker.postMessage({
         type: "RUN_CODE",
-        payload: { editors, data, editorsNotVisible, mode, inputs, testMode: true, reqId }
+        payload: { editors, data, editorsNotVisible, mode, inputs, testMode: true}
       });
     });
   };
