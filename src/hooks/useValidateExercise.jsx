@@ -30,7 +30,7 @@ export const useValidateExercise = async (
     setEditorValue = null,
   } = {}
 ) => {
-  const _postEvent = typeof postEvent === "function" ? postEvent : (...a) => console.warn("[validate] postEvent noop", a);
+  // const _postEvent = typeof postEvent === "function" ? postEvent : (...a) => console.warn("[validate] postEvent noop", a);
   const _onPyOutput = typeof onPyOutput === "function" ? onPyOutput : (t) => console.log("[pyout]\n" + t);
 
   const failureReasons = [];
@@ -256,7 +256,8 @@ export const useValidateExercise = async (
       // if (runIA) {
       //   await analizarConGroq(contexto?.enunciado, code, contexto?.clase, contexto?.idioma || "es", { forceSuccess: true });
       // }
-      _postEvent("SUCCESS", "Has completado el ejercicio", [], stateToPost);
+      // _postEvent("SUCCESS", "Has completado el ejercicio", [], stateToPost);
+      postEvent("SUCCESS", "Has completado el ejercicio", [], stateToPost);
       return;
     }
 
@@ -278,7 +279,7 @@ export const useValidateExercise = async (
         .filter(msg => !String(msg).includes("El código debe corregir los errores"));
 
       dbg("about to post FAILURE with", failureReasonsFiltrado);
-      _postEvent("FAILURE", "El ejercicio está incompleto", failureReasonsFiltrado, stateToPost);
+      postEvent("FAILURE", "El ejercicio está incompleto", failureReasonsFiltrado, stateToPost);
     } catch (e2) {
       console.error("[validate] catch falló al preparar/postear FAILURE", e2, { failureReasons });
     }
