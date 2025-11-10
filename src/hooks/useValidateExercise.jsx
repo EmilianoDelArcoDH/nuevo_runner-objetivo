@@ -31,7 +31,7 @@ export const useValidateExercise = async (
   } = {}
 ) => {
   // const _postEvent = typeof postEvent === "function" ? postEvent : (...a) => console.warn("[validate] postEvent noop", a);
-  const _onPyOutput = typeof onPyOutput === "function" ? onPyOutput : (t) => console.log("[pyout]\n" + t);
+  // const _onPyOutput = typeof onPyOutput === "function" ? onPyOutput : (t) => console.log("[pyout]\n" + t);
 
   const failureReasons = [];
   let syntaxErrorsFound = false;
@@ -242,7 +242,7 @@ export const useValidateExercise = async (
     if (runPy && (lang || "").toLowerCase() === "python") {
       //dbg("Pyodide inline start");
       const pyText = await runPythonWithCapture(code);
-      _onPyOutput(pyText);
+      onPyOutput(pyText);
       //dbg("Pyodide inline done");
     } else {
       dbg("Pyodide inline skipped");
