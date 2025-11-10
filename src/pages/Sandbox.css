@@ -1,0 +1,52 @@
+/* General Layout for the IDE-like view */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.main-content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sandbox-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden; /* Previene que cualquier contenido se desborde */
+}
+
+.flexlayout-wrapper {
+  flex: 1; /* Ocupa todo el espacio restante debajo de la toolbar */
+  position: relative; /* Asegura que el layout se mantenga en su contenedor */
+  height: calc(100vh - 50px); /* Descuenta la altura de la toolbar */
+  overflow: hidden; /* Controla los desbordamientos */
+}
+
+.flexlayout-container {
+  height: 100%; /* Ocupa el 100% del contenedor restante */
+  width: 100%;
+  position: absolute; /* Para mantener su posición relativa al contenedor */
+}
+
+.sandbox-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sandbox-container.light {
+  background-color: white;
+  color: black;
+}
+
+.sandbox-container.dark {
+  background-color: #2b2b2b;
+  color: white;
+}
+

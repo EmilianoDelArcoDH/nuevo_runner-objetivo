@@ -1,0 +1,85 @@
+/* Estilo general */
+.navigation-component {
+    padding: 10px;
+    border-right: 1px solid #ccc;
+    flex: 0 1 auto; /* Permite que el componente se ajuste automáticamente */
+    height: 100%; /* Para asegurar que ocupe toda la altura disponible */
+  }
+  
+  /* Estilo para la cuadrícula de archivos */
+  .files-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .file-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between; /* Asegura que el nombre y el icono estén alineados */
+    align-items: center; /* Centra verticalmente el contenido */
+    background-color: var(--file-bg);
+    color: var(--file-text);
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+  }
+  
+  .file-item:hover {
+    background-color: var(--file-hover-bg);
+  }
+  
+  .delete-icon {
+    color: var(--file-text);
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .delete-icon:hover {
+    color: red;
+  }
+  
+
+  .delete-icon {
+    color: var(--file-text);
+    margin-left: 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .delete-icon:hover {
+    color: red;
+  }
+  
+  .file-item:hover {
+    background-color: var(--file-hover-bg);
+  }
+  
+  /* Modo oscuro */
+  .navigation-component.dark {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+  }
+  
+  .navigation-component.dark .file-item {
+    --file-bg: #2d2d2d;
+    --file-text: #d4d4d4;
+    --file-hover-bg: #3c3c3c;
+  }
+  
+  /* Modo claro */
+  .navigation-component.light {
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .navigation-component.light .file-item {
+    --file-bg: #f3f3f3;
+    --file-text: #333;
+    --file-hover-bg: #e0e0e0;
+  }
+  

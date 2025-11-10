@@ -1,0 +1,468 @@
+/* General styles for the top navigation bar */
+.topNavBar {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    color: #d4d4d4; /* Default text color */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+    height: 40px; /* Height similar to VSCode's top bar */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font similar to VSCode */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+.topNavBar.light {
+    background-color: #ffffff; /* Light background color */
+    color: #333333; /* Dark text color */
+}
+
+.topNavBar.dark {
+    background-color: #1e1e1e; /* Dark background color */
+    color: #d4d4d4; /* Light text color */
+}
+
+/* Styling for the logo section */
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1em;
+    font-weight: 600;
+    margin-right: 20px; /* Space between logo and nav items */
+}
+
+.logo-icon {
+    width: 30px; /* Adjust size of Python logo */
+    height: auto;
+    margin-right: 10px; /* Space between logo and text */
+}
+
+
+@font-face {
+    font-family: 'Flux';
+    src: url('/FluxRegular.otf') format('truetype'); /* Asegúrate de usar la ruta correcta */
+    font-weight: normal; /* Peso normal */
+    font-style: normal; /* Estilo normal */
+}
+
+.logo-text {
+    font-family: 'Flux', sans-serif; /* Usar la fuente Flux */
+    font-weight: normal; /* Peso normal ya que es Flux Regular */
+    font-size: 1.5em; /* Ajusta el tamaño según sea necesario */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+/* Modo claro */
+.logo-text.light {
+    color: black; /* Color negro para modo claro */
+    text-shadow: 1px 1px 0 white; /* Sombra blanca para mejorar la legibilidad */
+}
+
+/* Modo oscuro */
+.logo-text.dark {
+    color: white; /* Color blanco para modo oscuro */
+    text-shadow: 1px 1px 0 black; /* Sombra negra para mejorar la legibilidad */
+}
+
+
+
+
+
+
+
+/* Styling for navigation links */
+.navLinks {
+    display: flex;
+    gap: 10px;
+    margin-left: 10px;
+    flex-grow: 1; /* Allows navLinks to take up available space */
+}
+
+.navItem {
+    font-size: 0.85em;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    line-height: 28px; /* Aligns text vertically */
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.2s ease;
+}
+
+.navItem + .navItemSnake {
+    margin-left: -35px; /* Ajusta el valor según lo pegado que lo desees */
+}
+
+
+.navItemSnake {
+    font-size: 0.85em;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    line-height: 28px; /* Aligns text vertically */
+    position: relative;
+    cursor: pointer;
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.2s ease;
+}
+
+
+
+.navItem:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Darker hover effect for dark mode */
+}
+
+.topNavBar.light .navItem:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Lighter hover effect for light mode */
+}
+
+/* Dropdown menu styling */
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    padding: 5px 0;
+    min-width: 150px; /* Wider dropdown */
+    opacity: 0; /* Hidden by default */
+    visibility: hidden; /* Hidden by default */
+    transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.2s ease;
+    z-index: 1000; /* Ensure dropdown appears above other content */
+}
+
+.navItem:hover .dropdown,
+.dropdown.show {
+    opacity: 1; /* Show dropdown */
+    visibility: visible; /* Show dropdown */
+}
+
+.dropdown a {
+    text-decoration: none;
+    padding: 8px 12px;
+    display: block;
+    color: inherit; /* Inherit color from parent */
+    transition: background-color 0.2s ease;
+}
+
+.dropdown a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Darker hover effect for dark mode */
+}
+
+.topNavBar.light .dropdown a:hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Lighter hover effect for light mode */
+}
+
+/* Ensure dropdown background color is solid */
+.topNavBar.light .dropdown {
+    background-color: #ffffff; /* Solid background color for light mode */
+}
+
+.topNavBar.dark .dropdown {
+    background-color: #2d2d2d; /* Solid background color for dark mode */
+}
+
+/* Styling for the actions section */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* General button styling */
+.actionButton {
+    background-color: #333333; /* Dark button background */
+    color: #d4d4d4; /* Light text color */
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 0.8em;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+    height: 24px; /* Aligns with the top bar height */
+}
+
+.actionButton:hover {
+    background-color: #555555; /* Slightly lighter dark color */
+}
+
+.topNavBar.light .actionButton {
+    background-color: #e0e0e0; /* Light button background */
+    color: #333333; /* Dark text color */
+}
+
+.topNavBar.light .actionButton:hover {
+    background-color: #cccccc; /* Slightly darker light color */
+}
+
+/* Specific styling for the run button */
+.runButton {
+    background-color: #007acc; /* VSCode's blue for run button */
+    color: #ffffff; /* White text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.runButton:hover {
+    background-color: #005f8a; /* Darker blue for hover */
+}
+
+.topNavBar.light .runButton {
+    background-color: #0067c0; /* Slightly lighter blue for light mode */
+}
+
+.topNavBar.light .runButton:hover {
+    background-color: #004b8f; /* Darker blue for hover in light mode */
+}
+
+/* Icon styling */
+.themeToggleButton {
+    font-size: 14px; /* Size similar to VSCode’s run icon */
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.themeIcon {
+    font-size: 14px; /* Size for moon icon */
+    color: #d4d4d4; /* Default color for the moon icon */
+}
+
+.topNavBar.light .themeIcon {
+    color: #333333; /* Darker color for the moon icon in light mode */
+}
+
+/* TopNavBar.css */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .sidebar.dark {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .sidebar h3 {
+    margin-top: 0;
+  }
+  
+  .sidebar input {
+    width: 100%;
+    right: 10px;
+    top: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Asegura que padding esté incluido en el ancho total */
+}
+  
+  .sidebar button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    background-color: #ddd;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .fontSizeControl {
+    display: flex;
+    align-items: center;
+    font-size: 0.85em; /* Tamaño de fuente alineado con navItem */
+    color: #333333; /* Color de texto predeterminado */
+    margin-right: 15px; /* Espacio entre el control y otros elementos */
+    gap: 8px; /* Espacio entre el label y el select */
+    }
+
+    .fontSizeControl label {
+        font-size: inherit; /* Hereda el tamaño de fuente de fontSizeControl */
+        color: inherit; /* Hereda el color del texto */
+    }
+
+    .fontSizeControl select {
+        background-color: #333333; /* Fondo oscuro para coherencia con botones */
+        color: #d4d4d4; /* Color de texto claro */
+        border: none;
+        border-radius: 4px;
+        padding: 4px 8px;
+        cursor: pointer;
+        font-size: inherit; /* Hereda el tamaño de fuente */
+        transition: background-color 0.2s ease;
+    }
+
+    .fontSizeControl select:hover {
+        background-color: #555555; /* Color más claro en hover */
+    }
+
+    .topNavBar.dark .fontSizeControl {
+        color: #e0e0e0;
+    }
+
+    .topNavBar.light .fontSizeControl select {
+        background-color: #e0e0e0; /* Fondo claro en modo claro */
+        color: #333333; /* Color de texto oscuro */
+    }
+
+    .topNavBar.light .fontSizeControl select:hover {
+        background-color: #cccccc; /* Color de hover en modo claro */
+    }
+
+
+    .languageSwitcher {
+        display: flex;
+        align-items: center;
+        font-size: 0.85em;
+        color: #333333;
+        gap: 5px; /* Espacio entre el ícono y el selector */
+      }
+      
+      .languageSwitcher .globeIcon {
+        font-size: 1.3em; /* Tamaño aumentado del ícono */
+        margin-right: 5px; /* Espacio entre el ícono y el texto del idioma */
+      }
+      
+      .languageSwitcher select {
+        background-color: transparent; /* Fondo transparente para integración con el fondo del ícono */
+        color: inherit;
+        border: none;
+        cursor: pointer;
+        font-size: inherit;
+        padding: 2px 4px; /* Espaciado compacto */
+        outline: none; /* Elimina el borde cuando está enfocado */
+        appearance: none; /* Elimina el estilo por defecto del selector */
+      }
+      
+      .languageSwitcher select:hover {
+        color: #555555; /* Cambia el color del texto al pasar el mouse */
+      }
+      
+      .languageSwitcher select:focus {
+        outline: none; /* Sin borde al hacer foco */
+      }
+      
+      .topNavBar.dark .languageSwitcher {
+        color: #e0e0e0;
+      }
+      
+      .topNavBar.light .languageSwitcher select {
+        color: #333333;
+      }
+      
+      .topNavBar.light .languageSwitcher select:hover {
+        color: #666666;
+      }
+      
+
+
+.popup-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Popup container */
+.popup-content {
+    background-color: #ffffff; /* Light mode background */
+    padding: 30px; /* More padding for breathing room */
+    border-radius: 12px; /* Softer corners */
+    position: relative;
+    max-width: 450px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Softer shadow for modern look */
+    text-align: center; /* Center the content */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    transform: scale(1); /* Initial state */
+    animation: popupSlideUp 0.3s ease; /* Smooth opening effect */
+}
+
+.popup-content.dark {
+    background-color: #2d2d2d; /* Dark mode background */
+    color: #d4d4d4; /* Text color for dark mode */
+}
+
+/* Keyframe animation for popup entrance */
+@keyframes popupSlideUp {
+    from {
+        transform: scale(0.9); /* Start smaller */
+        opacity: 0; /* Fade in */
+    }
+    to {
+        transform: scale(1); /* Full size */
+        opacity: 1;
+    }
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 24px; /* Bigger size for better visibility */
+    background: none;
+    border: none;
+    color: #333; /* Dark color for contrast */
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #ff4d4d; /* Softer red on hover */
+}
+
+.popup-content.dark .close-btn {
+    color: #d4d4d4; /* Softer for dark mode */
+}
+
+.popup-content.dark .close-btn:hover {
+    color: #ff7878; /* Red hover color for dark mode */
+}
+
+/* Popup title */
+.popup-content h2 {
+    margin-top: 0;
+    font-size: 24px;
+    color: inherit;
+}
+
+/* Popup text */
+.popup-content p {
+    font-size: 16px;
+    color: inherit;
+    margin-bottom: 0;
+}
+

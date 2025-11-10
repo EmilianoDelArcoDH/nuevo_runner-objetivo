@@ -1,0 +1,162 @@
+.snake {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    animation-name: show;
+    animation-duration: 1s;
+    top: 50%;
+    left: 50%;
+    margin-left: -12px;
+    z-index: 100
+  }
+  
+  .snake__box-0,
+  .snake__box-1,
+  .snake__box-2,
+  .snake__box-3 {
+    width: 6px;
+    height: 6px;
+    background: #3ad103;
+    border-radius: 2px;
+    position: absolute;
+    animation-name: move;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    box-shadow: 0 1px 0 0 #449b20, 0 3px 6px rgba(0, 0, 0, 0.3);
+    top: 6px;
+    left: 18px;
+    z-index: 0;
+  }
+  
+  .snake__box-0 {
+    background: #2b9103;
+    box-shadow: 0 1px 0 0 #366b1d, 0 3px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  .snake__box-1 {
+    animation-name: move, move2;
+    animation-delay: 0.25s;
+  }
+  
+  .snake__box-2 {
+    animation-name: move, move3;
+    animation-delay: 0.5s;
+  }
+  
+  .snake__box-3 {
+    animation-name: move, move4;
+    animation-delay: 0.75s;
+  }
+  
+  /* 
+  @keyframes show {
+    0% {
+      opacity: 0;
+    }
+    80% {
+      opacity: 0.01;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+    */
+  
+  @keyframes move {
+    0% {
+      top: 6px;
+      left: 18px;
+    }
+    6.25% {
+      top: 0;
+      left: 18px;
+    }
+    12.5% {
+      top: 0;
+      left: 12px;
+    }
+    18.75% {
+      top: 0;
+      left: 6px;
+    }
+    25% {
+      top: 0;
+      left: 0;
+    }
+    31.25% {
+      top: 6px;
+      left: 0;
+    }
+    37.5% {
+      top: 12px;
+      left: 0;
+    }
+    43.75% {
+      top: 18px;
+      left: 0;
+    }
+    50% {
+      top: 18px;
+      left: 6px;
+    }
+    56.25% {
+      top: 18px;
+      left: 12px;
+    }
+    62.5% {
+      top: 18px;
+      left: 18px;
+    }
+    68.75% {
+      top: 12px;
+      left: 18px;
+    }
+    75% {
+      top: 12px;
+      left: 12px;
+    }
+    81.25% {
+      top: 12px;
+      left: 6px;
+    }
+    87.5% {
+      top: 6px;
+      left: 6px;
+    }
+    93.75% {
+      top: 6px;
+      left: 12px;
+    }
+    100% {
+      top: 6px;
+      left: 18px;
+    }
+  }
+  
+  @keyframes move2 {
+    25%, 50% {
+      z-index: -1;
+    }
+    56.25%, 100% {
+      z-index: 0;
+    }
+  }
+  
+  @keyframes move3 {
+    25%, 50% {
+      z-index: -2;
+    }
+    56.25%, 100% {
+      z-index: 0;
+    }
+  }
+  
+  @keyframes move4 {
+    25%, 50% {
+      z-index: -3;
+    }
+    56.25%, 100% {
+      z-index: 0;
+    }
+  }
+  

@@ -1,0 +1,86 @@
+/* Smooth fade-in for backdrop */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Ensure it's on top of everything */
+  }
+  
+  #python-logo {
+    max-width: 60vw;
+    max-height: 60vh;
+    padding: 5px;
+    overflow: visible;
+    cursor: pointer;
+    
+    path {
+      position: relative;
+      fill: transparent;
+      stroke-width: 5px;
+      transition: all .2s ease-in-out;
+      
+      &:first-child {
+        stroke: #3670A0;
+        animation: border-move 2s linear forwards, fill-first 1s 2s linear forwards;
+      }
+      
+      &:last-child {
+        stroke: #FED140;
+        animation: border-move 2s linear forwards, fill-second 1s 2s linear forwards;
+      }
+    }
+    
+    &:hover {
+      path:first-child {
+        transform: translate(-2%, -2%);
+        text-shadow: 0 0 20px #3670A0;
+      }
+      path:last-child {
+        transform: translate(2%, 2%);
+        box-shadow: 0 0 20px #FED140;
+      }
+    }
+  }
+  
+  @keyframes border-move {
+    0% {
+      stroke-dasharray: 0 1600;
+    }
+    100% {
+      stroke-dasharray: 1600 1600;
+    }
+  }
+  
+  @keyframes fill-first {
+    0% {
+      fill: transparent;
+    }
+    100% {
+      fill: #3670A0;
+    }
+  }
+  
+  @keyframes fill-second {
+    0% {
+      fill: transparent;
+    }
+    100% {
+      fill: #FED140;
+    }
+  }
+  

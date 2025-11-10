@@ -1,0 +1,73 @@
+.snake-container {
+    --speed: 2s; /* Definir la variable CSS para la velocidad */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .snake-container svg {
+    width: 100%;
+    height: 100%;
+    max-width: 144px;
+    max-height: 90vh;
+    /* Para evitar el desbordamiento mientras se mantiene responsivo */
+  }
+  
+  .snake-container .snake-group { 
+    stroke: #292A18; 
+  }
+  
+  .snake-container .snake { 
+    animation: stroke-anim var(--speed) linear infinite; 
+    stroke-dasharray: 32 224;
+    stroke-dashoffset: 256;
+    animation-timing-function: steps(32);
+  }
+  
+  @keyframes stroke-anim {
+    to { 
+      stroke-dashoffset: 0; 
+    }
+  }
+  
+  .snake-container .dot { 
+    animation: dot1 var(--speed) steps(1) infinite; 
+  }
+  
+  @keyframes dot1 { 
+    0%, 26%, 91.1% { 
+      opacity: 1; 
+    }
+    26.1%, 91% { 
+      opacity: 0; 
+    }
+  }
+  
+  .snake-container .dot-2 { 
+    animation-name: dot2; 
+  }
+  
+  @keyframes dot2 { 
+    0%, 26%, 51%, 100% { 
+      opacity: 0; 
+    }
+    26.1%, 50% { 
+      opacity: 1; 
+    }
+  }
+  
+  .snake-container .dot-3 { 
+    animation-name: dot3; 
+  }
+  
+  @keyframes dot3 { 
+    0%, 50%, 92%, 100% { 
+      opacity: 0; 
+    }
+    50.1%, 92% { 
+      opacity: 1; 
+    }
+  }
+  
