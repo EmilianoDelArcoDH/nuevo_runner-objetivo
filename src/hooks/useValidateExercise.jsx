@@ -62,7 +62,7 @@ export const useValidateExercise = async (
         const ctx = await getContextFromEnunciados(exerciseId, lang);
         const { enunciado, clase, codigoBase } = ctx || {};
         contexto = { enunciado, clase, idioma: (lang || "es") };
-       // dbg("context via enunciados.json", contexto);
+        // dbg("context via enunciados.json", contexto);
         if (codigoBase && !String(code || "").trim() && typeof setEditorValue === "function") {
           setEditorValue(codigoBase);
           code = codigoBase;
@@ -224,7 +224,7 @@ export const useValidateExercise = async (
             failureReasons.push(`${r.error}`);
           }
         });
-       //dbg("Sim done", { simulationErrorsFound, failureReasons });
+        //dbg("Sim done", { simulationErrorsFound, failureReasons });
       } catch (e) {
         dbg("Sim error", e);
         throw new Error("Fallo ejecutando simulación");
@@ -266,10 +266,22 @@ export const useValidateExercise = async (
     throw new Error("Falló la validación de sintaxis o simulación");
   } catch (err) {
     dbg("catch", err);
-    const failureReasonsFiltrado = failureReasons.filter(r =>
-      !r.includes("El código debe corregir los errores")
-    );
-    _postEvent("FAILURE", "El ejercicio está incompleto", failureReasonsFiltrado, stateToPost);
+    try {
+      const normalizeMsg = (r) => {
+        if (typeof r === "string") return r;
+        if (r && (r.es || r.en || r.pt)) return r.es || r.en || r.pt;
+        try { return String(r); } catch { return "(no serializable)"; }
+      };
+
+      const failureReasonsFiltrado = (failureReasons || [])
+        .map(normalizeMsg)
+        .filter(msg => !String(msg).includes("El código debe corregir los errores"));
+
+      dbg("about to post FAILURE with", failureReasonsFiltrado);
+      _postEvent("FAILURE", "El ejercicio está incompleto", failureReasonsFiltrado, stateToPost);
+    } catch (e2) {
+      console.error("[validate] catch falló al preparar/postear FAILURE", e2, { failureReasons });
+    }
   }
 };
 
