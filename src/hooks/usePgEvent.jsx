@@ -26,6 +26,8 @@ export const usePgEvent = () => {
   };
 
   const isValidInitialEvent = (event) => {
+    console.log(event);
+    
     return (
       event?.data?.data &&
       event?.data?.type === "init" &&
@@ -65,7 +67,7 @@ export const usePgEvent = () => {
 
   const postEvent = (eventType, message, reasons, state) => {
     console.log("hasta aca llega", eventType, message, reasons, state, data.id);
-    
+    getValues();
   const payload = { data: state, eventType };
   const dataObject = {
     event: eventType,
