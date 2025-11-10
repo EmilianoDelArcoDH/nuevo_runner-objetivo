@@ -62,6 +62,8 @@ export const usePgEvent = () => {
   };
 
   const postEvent = (eventType, message, reasons, state) => {
+    console.log("hasta aca llega");
+    
   const payload = { data: state, eventType };
   const dataObject = {
     event: eventType,

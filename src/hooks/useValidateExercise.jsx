@@ -30,8 +30,6 @@ export const useValidateExercise = async (
     setEditorValue = null,
   } = {}
 ) => {
-  // const _postEvent = typeof postEvent === "function" ? postEvent : (...a) => console.warn("[validate] postEvent noop", a);
-  // const _onPyOutput = typeof onPyOutput === "function" ? onPyOutput : (t) => console.log("[pyout]\n" + t);
 
   const failureReasons = [];
   let syntaxErrorsFound = false;
@@ -256,7 +254,6 @@ export const useValidateExercise = async (
       // if (runIA) {
       //   await analizarConGroq(contexto?.enunciado, code, contexto?.clase, contexto?.idioma || "es", { forceSuccess: true });
       // }
-      // _postEvent("SUCCESS", "Has completado el ejercicio", [], stateToPost);
       postEvent("SUCCESS", "Has completado el ejercicio", [], stateToPost);
       return;
     }
@@ -267,22 +264,10 @@ export const useValidateExercise = async (
     throw new Error("Falló la validación de sintaxis o simulación");
   } catch (err) {
     dbg("catch", err);
-    try {
-      const normalizeMsg = (r) => {
-        if (typeof r === "string") return r;
-        if (r && (r.es || r.en || r.pt)) return r.es || r.en || r.pt;
-        try { return String(r); } catch { return "(no serializable)"; }
-      };
-
-      const failureReasonsFiltrado = (failureReasons || [])
-        .map(normalizeMsg)
-        .filter(msg => !String(msg).includes("El código debe corregir los errores"));
-
-      dbg("about to post FAILURE with", failureReasonsFiltrado);
-      postEvent("FAILURE", "El ejercicio está incompleto", failureReasonsFiltrado, stateToPost);
-    } catch (e2) {
-      console.error("[validate] catch falló al preparar/postear FAILURE", e2, { failureReasons });
-    }
+    const failureReasonsFiltrado = failureReasons.filter(r =>
+      !r.includes("El código debe corregir los errores")
+    );
+    postEvent("FAILURE", "El ejercicio está incompleto", failureReasonsFiltrado, stateToPost);
   }
 };
 
